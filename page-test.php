@@ -14,7 +14,7 @@
             <div class="wizard_top">
                 <img src="<?= get_template_directory_uri() ?>/assets/img/barra-disc.png" alt="">
             </div>
-            <div class="wizard_text" style="display: none">
+            <div class="wizard_text">
                 <header class="header_wizard_text">
                     <h3 class="wizard_title">Você está pronta(o) para conhecer seu perfil comportamental predominante?</h3>
                 </header>
@@ -35,8 +35,8 @@
                 </div>
                 
             </div>
-            <!-- <form action="" method="" class="f_ask show"> -->
-                <div class="content_ask hidden">
+            <div class="f_ask">
+                <div class="content_ask">
                     <div class="ask_top">
                         <p class="title_ask">Por qual motivo você está fazendo o teste DISC?</p>
                     </div>
@@ -72,7 +72,7 @@
                 </div>
                 
 
-                <div class="box_test show">
+                <div class="box_test">
                     <div class="box_top">
                         <h4 class="box_test_title">Selecione o adjetivo que melhor descreve você!</h4>
                         <p class="box_test_subtitle">(Mesmo que você se identifique com mais de um, escolha o que mais se encaixa)</p>
@@ -101,7 +101,7 @@
                     </div>
                     <button id="test">Test</button>
                 </div>
-            <!-- </form> -->
+            </div>
         </div>
 
         <div class="social_share_box">

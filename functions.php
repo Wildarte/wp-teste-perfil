@@ -13,4 +13,6 @@
     remove_action('admin_print_styles', 'print_emoji_styles');
 
 
+    include('admin/fields_control.php');
+
 ?>
