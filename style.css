@@ -1,0 +1,375 @@
+/*
+Theme Name: Teste DISC
+Theme URI: ""
+Author: Wildney
+Author URI: https://digisolucao.com
+Description: Tema criado para imobiliarias e corretores
+Version: 1.0
+*/
+
+
+
+header.header_top_area{
+    height: 500px;
+    background-color: #007F7B;
+    padding: 40px;
+    color: #fff;
+}
+.header_title{
+    text-align: center;
+    font-size: 2.5em;
+    line-height: 40px;
+    margin: 60px 0 10px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.header_subtitle{
+    font-size: 1.6em;
+    font-weight: 300;
+    margin-top: -5px;
+    text-align: center;
+}
+.container_wizard{
+    background-color: #fff;
+    box-shadow: 0 0 5px #777;
+    margin: -300px auto 60px;
+    z-index: 9;
+    position: relative;
+    max-width: 970px;
+}
+.wizard_top{
+    text-align: center;
+    background-color: #fff4e3;
+    border-bottom: 1px solid #f6e8d3;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+.wizard_text{
+    padding: 50px 60px;
+}
+.header_wizard_text{
+    width: 100%;
+}
+.header_wizard_text .wizard_title{
+    font-size: 2em;
+    text-align: center;
+    font-weight: 300;
+    line-height: 1.5em;
+    color: #333;
+}
+.wizard_body{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+.wizard_tips{
+    flex-basis: 60%;
+    padding: 20px;
+}
+.wizard_action{
+    flex-basis: 40%;
+    padding: 20px;
+}
+.tips_title{
+    font-size: .9em;
+    color: #333;
+    margin: 10px 0;
+}
+.tips_list{
+    margin-left: 15px;
+}
+.tips_list li{
+    font-size: .8em;
+    color: #444;
+    line-height: 1.5em;
+}
+.wizard_action{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    justify-content: center;
+}
+.wizard_action .wizard_action_title{
+    flex-basis: 100%;
+    text-align: center;
+    color: #222;
+    font-size: 1.4em;
+    font-weight: 300;
+    margin: 10px 0;
+}
+.wizard_action .btn_wizard{
+    padding: 12px 20px;
+    font-size: .8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #3276B1;
+    border: none;
+    border-radius: 3px;
+}
+.wizard_action .btn_wizard:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+
+.social_share_box{
+    position: fixed;
+    top: 30%;
+    left: 0;
+    box-shadow: 1px 1px 5px #000;
+    z-index: 10;
+}
+.share_top{
+    display: block;
+    background-color: #fff;
+    color: #333;
+    padding: 2px;
+}
+.num_share{
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+}
+.share_text{
+    font-size: .8em;
+}
+.social_share_box ul li.share{
+    display: flex;
+    padding: 15px;
+    position: relative;
+}
+.social_share_box ul li.share:hover{
+    cursor: pointer;
+}
+.s{
+    display: none;
+}
+.social_share_box ul li img{
+    width: 20px;
+    margin: auto;
+}
+
+.share_facebook{
+    background-color: #3b5998;
+}
+.share_twitter{
+    background-color: #00acee;
+}
+.share_linkedin{
+    background-color: #0072b1;
+}
+.share_link{
+    background-color: #33cc33;
+}
+
+.social_share_box ul li.share span.s{
+    display: flex;
+    opacity: 0;
+    align-items: center;
+    padding-right: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    vertical-align: middle;
+    border-radius: 0 5px 5px 0;
+    color: #fff;
+}
+.social_share_box ul li.share .share_not_facebook{
+    background-color: #3b5998;
+}
+.social_share_box ul li.share .share_not_twitter{
+    background-color: #00acee;
+}
+.social_share_box ul li.share .share_not_linkedin{
+    background-color: #3276B1;
+}
+.social_share_box ul li.share .share_not_share{
+    background-color: #33cc33;
+}
+.openShare{
+    animation: openShare .3s forwards;
+}
+.closeShare{
+    animation: closeShare .3s forwards;
+}
+@keyframes openShare{
+    from{
+        opacity: 0;
+        left: 30%;
+    }
+    to{
+        opacity: 1;
+        left: 100%;
+    }
+}
+@keyframes closeShare{
+    from{
+        opacity: 1;
+        left: 100%;
+    }
+    to{
+        opacity: 0;
+        left: 30%;
+    }
+}
+
+
+.content_ask{
+    padding: 10px 10px 40px;
+}
+.title_ask{
+    font-size: 1.8em;
+    margin: 20px;
+    padding: 20px;
+    color: #333;
+    text-align: center;
+}
+.wizard_start{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.wizard_start p{
+    flex-basis: calc(50% - 80px);
+    margin: 20px;
+}
+.ask_bottom{
+    max-width: 100%;
+    text-align: right;
+    padding: 20px;
+    margin: 20px;
+}
+.ask_bottom button.continue_test{
+    padding: 12px 20px;
+    font-size: .8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #3276B1;
+    border: none;
+    border-radius: 3px;
+}
+.ask_bottom button.continue_test:hover{
+    cursor: pointer;
+    opacity: .9;
+}
+
+.box_test{
+    display: none;
+}
+
+.box_test_title{
+    margin: 20px 20px 5px;
+    padding: 20px 20px 0;
+    font-size: 2em;
+    font-weight: 300;
+    color: #222;
+    text-align: center;
+}
+.box_test_subtitle{
+    font-size: 1em;
+    padding: 20px;
+    text-align: center;
+}
+.box_resps{
+    display: block;
+    padding: 40px;
+}
+ul.resps{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+ul.resps li button{
+    padding: 8px 30px;
+    margin: 10px;
+    font-size: 1em;
+    font-weight: 200;
+    border: 1px solid #333;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+ul.resps li button:hover{
+    cursor: pointer;
+    box-shadow: inset 1px 1px 8px #111;
+    transition: all .23s;
+}
+.box_bar{
+    width: 100%;
+    padding: 20px 40px;
+}
+.bar_progress{
+    height: 20px;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    background-color: #bbb;
+}
+.progress{
+    background-color: tomato;
+    text-align: center;
+    padding: 5px;
+    font-size: .9em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.f_ask{
+    display: none;
+}
+.hidden{
+    display: none;
+}
+.show{
+    display: block;
+}
+@media (max-width: 768px){
+    .header_title{
+        font-size: 2em;
+    }
+    .header_subtitle{
+        font-size: 1.4em;
+    }
+    .wizard_text{
+        padding: 20px;
+    }
+    .header_wizard_text .wizard_title{
+        font-size: 1.6em;
+    }
+    .wizard_body{
+        padding: 10px;
+    }
+    .wizard_tips{
+        flex-basis: 100%;
+    }
+    .wizard_action{
+        flex-basis: 100%;
+    }
+}
+
+@media(max-width: 420px){
+    header.header_top_area{
+        padding: 20px;
+    }
+    .social_share_box ul li.share{
+        padding: 8px;
+    }
+    .social_share_box ul li img{
+        width: 12px;
+    }
+    .share_text{
+        font-size: .6em;
+    }
+    .header_wizard_text .wizard_title{
+        font-size: 1.4em;
+    }
+    .header_title{
+        margin: 30px 0 10px 0;
+    }
+}
