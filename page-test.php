@@ -2,6 +2,29 @@
 
     // Template Name: Teste DISC
     get_header();
+    
+    
+    
+    $adjetivos = get_post_meta(get_the_ID(), 'area_adjetivos', true);
+
+    $count_questions = count($adjetivos);
+
+    //echo $adjetivos[1]['adjetivo_one'];
+
+    echo "<br>";
+
+    if(is_array($adjetivos)):
+
+        //foreach($adjetivos as $adjetivo):
+
+            echo "<h4>".$adjetivos[0]['adjetivo_one']."</h4>";
+            echo "<h4>".$adjetivos[0]['adjetivo_two']."</h4>";
+            echo "<h4>".$adjetivos[0]['adjetivo_three']."</h4>";
+            echo "<h4>".$adjetivos[0]['adjetivo_four']."</h4>";
+
+        //endforeach;
+
+    endif;
 
 ?>
     
@@ -78,25 +101,46 @@
                         <p class="box_test_subtitle">(Mesmo que você se identifique com mais de um, escolha o que mais se encaixa)</p>
                     </div>
                     <div class="box_resps">
+                        <?php
+                            $adjetivos = get_post_meta(get_the_ID(), 'area_adjetivos', true);
+
+                        ?>
+                        <?php if(!empty($adjetivos)): ?>
                         <ul class="resps">
+                            
+                                <?php if(!empty($adjetivos[0]['adjetivo_one'])): ?>
                             <li>
-                                <button onclick="sendResp()" class="btn_resp">Sociável</button>
-                            </li>   
-                            <li>
-                                <button onclick="sendResp()" class="btn_resp">atencioso</button>
+                                <button onclick="sendResp()" class="btn_resp"><?= $adjetivos[0]['adjetivo_one']; ?></button>
                             </li>
+                            <?php
+                                endif;
+                                if(!empty($adjetivos[0]['adjetivo_two'])):
+                            ?>   
                             <li>
-                                <button onclick="sendResp()" class="btn_resp">Controlado</button>
+                                <button onclick="sendResp()" class="btn_resp"><?= $adjetivos[0]['adjetivo_two']; ?></button>
                             </li>
+                            <?php
+                                endif;
+                                if(!empty($adjetivos[0]['adjetivo_three'])):
+                            ?>
                             <li>
-                                <button onclick="sendResp()" class="btn_resp">Energético</button>
+                                <button onclick="sendResp()" class="btn_resp"><?= $adjetivos[0]['adjetivo_three']; ?></button>
                             </li>
+                            <?php
+                                endif;
+                                if(!empty($adjetivos[0]['adjetivo_four'])):
+                            ?>
+                            <li>
+                                <button onclick="sendResp()" class="btn_resp"><?= $adjetivos[0]['adjetivo_four']; ?></button>
+                            </li>
+                            <?php endif; ?>
                         </ul>
+                        <?php endif; ?>
                     </div>
                     <div class="box_bar">
                         <div class="bar_progress">
-                            <?php $width = 100/40; ?>
-                            <div class="progress" id="progress" style="width: <?= $width ?>%"><span id="val_point">1</span>/<span id="max_progress">40</span></div>
+                            <?php $width = 100/$count_questions; ?>
+                            <div class="progress" id="progress" style="width: <?= $width ?>%"><span id="val_point">1</span>/<span id="max_progress"><?= $count_questions; ?></span></div>
                         </div>
                     </div>
                     <button id="test">Test</button>

@@ -14,6 +14,11 @@ function get_num(num){
 }
 //get num max questions -------
 
+let page_id = 0;
+function get_page_id(page){
+    page_id = page;
+}
+
 btn_share.forEach((item) => {
     item.addEventListener('mouseover', function(){
         this.querySelector('span.s').classList.remove('closeShare');
@@ -81,11 +86,11 @@ function controllBar(num){
 }
 
 
-function reqAsk(url, num){
+function reqAsk(url, num, page_id){
 
     let num_q = num; //numero da questão
 
-    var params = "&num_q="+num_q;
+    var params = "&num_q="+num_q+"&page_id="+page_id;
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function(){
         let resp = this.responseText;
@@ -100,11 +105,11 @@ function reqAsk(url, num){
 
 function sendResp(){
     //e.preventDefault();
-    reqAsk(`${global_url}/admin/ask.php`, num_max);
+    reqAsk(`${global_url}/admin/ask.php`, count, page_id);
 
     //aumenta a barra de progresso
     const max_progress = parseInt(document.getElementById('max_progress').innerText);
-    console.log("Contagem: "+count);
+    console.log("count: "+count);
 
 
     //incrementa a barra se for menor que o tamanho maximo
