@@ -19,6 +19,11 @@ function get_page_id(page){
     page_id = page;
 }
 
+let value_d = 0;
+let value_i = 0;
+let value_s = 0;
+let value_c = 0;
+
 btn_share.forEach((item) => {
     item.addEventListener('mouseover', function(){
         this.querySelector('span.s').classList.remove('closeShare');
@@ -86,11 +91,11 @@ function controllBar(num){
 }
 
 
-function reqAsk(url, num, page_id){
+function reqAsk(url, num, page_id, value, resp, pos){
 
     let num_q = num; //numero da questão
 
-    var params = "&num_q="+num_q+"&page_id="+page_id;
+    var params = "&num_q="+num_q+"&page_id="+page_id+"&value_answer="+value+"&answer="+resp+"&position="+pos;
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function(){
         let resp = this.responseText;
@@ -103,10 +108,14 @@ function reqAsk(url, num, page_id){
 
 }
 
-function sendResp(){
+function sendResp(pos, value, resp){
     //e.preventDefault();
-    reqAsk(`${global_url}/admin/ask.php`, count, page_id);
-
+    reqAsk(`${global_url}/admin/ask.php`, count, page_id, value, resp, pos);
+    calcResult(value);
+    console.log('D: '+value_d);
+    console.log('I: '+value_i);
+    console.log('S: '+value_s);
+    console.log('C: '+value_c);
     //aumenta a barra de progresso
     const max_progress = parseInt(document.getElementById('max_progress').innerText);
     console.log("count: "+count);
@@ -130,5 +139,24 @@ function sendResp(){
         document.getElementById('val_point').innerText = val_point_plus;
 
         count += 1;//incremento bar
+    }
+}
+
+function calcResult(value){
+    switch(value){
+        case "d":
+            value_d += 1;
+        break;
+        case "i":
+            value_i += 1;
+        break;
+        case "s":
+            value_s += 1;
+        break;
+        case "c":
+            value_c += 1;
+        break;
+        default:
+
     }
 }

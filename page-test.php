@@ -103,35 +103,34 @@
                     <div class="box_resps">
                         <?php
                             $adjetivos = get_post_meta(get_the_ID(), 'area_adjetivos', true);
-
                         ?>
                         <?php if(!empty($adjetivos)): ?>
                         <ul class="resps">
                             
                                 <?php if(!empty($adjetivos[0]['adjetivo_one'])): ?>
                             <li>
-                                <button onclick="sendResp()" class="btn_resp"><?= $adjetivos[0]['adjetivo_one']; ?></button>
+                                <button onclick="sendResp(1,'<?= $adjetivos[0]['select_cat_adj_one']; ?>', '<?= $adjetivos[0]['adjetivo_one']; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_one']; ?></button>
                             </li>
                             <?php
                                 endif;
                                 if(!empty($adjetivos[0]['adjetivo_two'])):
                             ?>   
                             <li>
-                                <button onclick="sendResp()" class="btn_resp"><?= $adjetivos[0]['adjetivo_two']; ?></button>
+                                <button onclick="sendResp(2,'<?= $adjetivos[0]['select_cat_adj_two']; ?>', '<?= $adjetivos[0]['adjetivo_two']; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_two']; ?></button>
                             </li>
                             <?php
                                 endif;
                                 if(!empty($adjetivos[0]['adjetivo_three'])):
                             ?>
                             <li>
-                                <button onclick="sendResp()" class="btn_resp"><?= $adjetivos[0]['adjetivo_three']; ?></button>
+                                <button onclick="sendResp(3,'<?= $adjetivos[0]['select_cat_adj_three']; ?>', '<?= $adjetivos[0]['adjetivo_three']; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_three']; ?></button>
                             </li>
                             <?php
                                 endif;
                                 if(!empty($adjetivos[0]['adjetivo_four'])):
                             ?>
                             <li>
-                                <button onclick="sendResp()" class="btn_resp"><?= $adjetivos[0]['adjetivo_four']; ?></button>
+                                <button onclick="sendResp(4,'<?= $adjetivos[0]['select_cat_adj_four']; ?>', '<?= $adjetivos[0]['adjetivo_four']; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_four']; ?></button>
                             </li>
                             <?php endif; ?>
                         </ul>
@@ -143,8 +142,12 @@
                             <div class="progress" id="progress" style="width: <?= $width ?>%"><span id="val_point">1</span>/<span id="max_progress"><?= $count_questions; ?></span></div>
                         </div>
                     </div>
-                    <button id="test">Test</button>
+                    
                 </div>
+            </div>
+
+            <div class="result">
+
             </div>
         </div>
 
