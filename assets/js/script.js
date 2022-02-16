@@ -19,10 +19,6 @@ function get_page_id(page){
     page_id = page;
 }
 
-let value_d = 0;
-let value_i = 0;
-let value_s = 0;
-let value_c = 0;
 
 btn_share.forEach((item) => {
     item.addEventListener('mouseover', function(){
@@ -99,8 +95,14 @@ function reqAsk(url, num, page_id, value, resp, pos){
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function(){
         let resp = this.responseText;
+        switch(resp){
+            case 0:
+                "";
+            break;
+            default:
+                document.getElementsByClassName('box_resps')[0].innerHTML = resp;
 
-        document.getElementsByClassName('box_resps')[0].innerHTML = resp;
+        }
     }
     xmlhttp.open("post", url, true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -112,10 +114,7 @@ function sendResp(pos, value, resp){
     //e.preventDefault();
     reqAsk(`${global_url}/admin/ask.php`, count, page_id, value, resp, pos);
     calcResult(value);
-    console.log('D: '+value_d);
-    console.log('I: '+value_i);
-    console.log('S: '+value_s);
-    console.log('C: '+value_c);
+
     //aumenta a barra de progresso
     const max_progress = parseInt(document.getElementById('max_progress').innerText);
     console.log("count: "+count);
@@ -142,21 +141,3 @@ function sendResp(pos, value, resp){
     }
 }
 
-function calcResult(value){
-    switch(value){
-        case "d":
-            value_d += 1;
-        break;
-        case "i":
-            value_i += 1;
-        break;
-        case "s":
-            value_s += 1;
-        break;
-        case "c":
-            value_c += 1;
-        break;
-        default:
-
-    }
-}

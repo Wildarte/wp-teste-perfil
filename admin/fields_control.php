@@ -39,6 +39,9 @@ function cmb2_fields_teste(){
         ]
     ]);
     */
+
+   
+
     $cmb2_area_teste->add_group_field($campos_teste, [
         'name' => 'Adjetivo 1',
         'id' => 'adjetivo_one',
@@ -57,10 +60,10 @@ function cmb2_fields_teste(){
         'show_option_none' => true,
         'default'          => 'd',
         'options'          => array(
-            "d" => __( 'D', 'cmb2' ),
-            "i" => __( 'I', 'cmb2' ),
-            "s" => __( 'S', 'cmb2' ),
-            "c" => __( 'C', 'cmb2' ),
+            "".$GLOBALS['d']."" => __( 'D', 'cmb2' ),
+            "".$GLOBALS['i']."" => __( 'I', 'cmb2' ),
+            "".$GLOBALS['si']."" => __( 'S', 'cmb2' ),
+            "".$GLOBALS['c']."" => __( 'C', 'cmb2' ),
         ),
     ]);
 
@@ -83,10 +86,10 @@ function cmb2_fields_teste(){
         'show_option_none' => true,
         'default'          => 'd',
         'options'          => array(
-            "d" => __( 'D', 'cmb2' ),
-            "i" => __( 'I', 'cmb2' ),
-            "s" => __( 'S', 'cmb2' ),
-            "c" => __( 'C', 'cmb2' ),
+            "".$GLOBALS['d']."" => __( 'D', 'cmb2' ),
+            "".$GLOBALS['i']."" => __( 'I', 'cmb2' ),
+            "".$GLOBALS['si']."" => __( 'S', 'cmb2' ),
+            "".$GLOBALS['c']."" => __( 'C', 'cmb2' ),
         ),
     ]);
 
@@ -109,10 +112,10 @@ function cmb2_fields_teste(){
         'show_option_none' => true,
         'default'          => 'd',
         'options'          => array(
-            "d" => __( 'D', 'cmb2' ),
-            "i" => __( 'I', 'cmb2' ),
-            "s" => __( 'S', 'cmb2' ),
-            "c" => __( 'C', 'cmb2' ),
+            "".$GLOBALS['d']."" => __( 'D', 'cmb2' ),
+            "".$GLOBALS['i']."" => __( 'I', 'cmb2' ),
+            "".$GLOBALS['si']."" => __( 'S', 'cmb2' ),
+            "".$GLOBALS['c']."" => __( 'C', 'cmb2' ),
         ),
     ]);
 
@@ -135,10 +138,10 @@ function cmb2_fields_teste(){
         'show_option_none' => true,
         'default'          => 'd',
         'options'          => array(
-            "d" => __( 'D', 'cmb2' ),
-            "i" => __( 'I', 'cmb2' ),
-            "s" => __( 'S', 'cmb2' ),
-            "c" => __( 'C', 'cmb2' ),    
+            "".$GLOBALS['d']."" => __( 'D', 'cmb2' ),
+            "".$GLOBALS['i']."" => __( 'I', 'cmb2' ),
+            "".$GLOBALS['si']."" => __( 'S', 'cmb2' ),
+            "".$GLOBALS['c']."" => __( 'C', 'cmb2' ),    
         ),
     ]);
 

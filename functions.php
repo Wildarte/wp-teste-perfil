@@ -1,5 +1,13 @@
 <?php
 
+    //variaveis para armazenar os
+    $GLOBALS['d'] = "Fdj32dsj";
+    $GLOBALS['i'] = "m90dsOcs";
+    $GLOBALS['si'] = "lnM02sla";
+    $GLOBALS['c'] = "cmaJdnsx";
+
+    
+
     // Funções para Limpar o Header
     remove_action('wp_head', 'rsd_link');
     remove_action('wp_head', 'wlwmanifest_link');

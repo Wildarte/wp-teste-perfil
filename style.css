@@ -329,6 +329,96 @@ ul.resps li button:hover{
 .show{
     display: block;
 }
+
+
+
+.result{
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.graphs{
+    padding: 10px;
+}
+.graphs, .result_info{
+    flex-basis: 50%;
+}
+.result .graphs h4{
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 300;
+}
+.fi_div {
+    width: 100%;
+    margin: 10px 0;
+}
+.fi_div span{
+    font-size: 1em;
+    font-weight: 100x;
+    color: #444;
+    margin-bottom: 10px;
+}
+.fi_div .bar{
+    width: 80%;
+    height: 32px;
+    background-color: #bbb;
+    border-radius: 3px;
+    display: flex;
+}
+.result_info{
+    padding: 70px 20px 20px;
+}
+.result_info p{
+    font-size: .9em;
+    font-weight: 100;
+    margin: 15px 0;
+}
+.submit_result{
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    background-color: #00acee;
+    padding: 10px;
+    margin: 20px 0;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    transition: .25s;
+}
+.submit_result:hover{
+    cursor: pointer;
+    background-color: #008add;
+}
+.dom_bar_progress{
+    width: 0%;
+    height: 100%;
+    background-color: red;
+    position: relative;
+    border-radius: 3px;
+}
+
+.tooltip_progress{
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: #fff!important;
+    font-size: .8em!important;
+    position: absolute;
+    background-color: #454545;
+    top: -110%;
+    right: 5px;
+    z-index: 1;
+}
+.tooltip_progress::after{
+    position: absolute;
+    bottom: -5px;
+    left: 13px;
+    display: block;
+    width: 0;
+    border-width: 5px 5px 0;
+    border-style: solid;
+    border-color: #333 transparent;
+    content: "";
+}
 @media (max-width: 768px){
     .header_title{
         font-size: 2em;

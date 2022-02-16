@@ -37,7 +37,7 @@
             <div class="wizard_top">
                 <img src="<?= get_template_directory_uri() ?>/assets/img/barra-disc.png" alt="">
             </div>
-            <div class="wizard_text">
+            <div class="wizard_text" style="display: none;">
                 <header class="header_wizard_text">
                     <h3 class="wizard_title">Você está pronta(o) para conhecer seu perfil comportamental predominante?</h3>
                 </header>
@@ -58,7 +58,7 @@
                 </div>
                 
             </div>
-            <div class="f_ask">
+            <div class="f_ask" style="display: none;">
                 <div class="content_ask">
                     <div class="ask_top">
                         <p class="title_ask">Por qual motivo você está fazendo o teste DISC?</p>
@@ -104,33 +104,35 @@
                         <?php
                             $adjetivos = get_post_meta(get_the_ID(), 'area_adjetivos', true);
                         ?>
-                        <?php if(!empty($adjetivos)): ?>
+                        <?php if(!empty($adjetivos)): $array_adj = ['one','two','three','four']; 
+                            shuffle($array_adj);
+                        ?>
                         <ul class="resps">
                             
-                                <?php if(!empty($adjetivos[0]['adjetivo_one'])): ?>
+                                <?php if(!empty($adjetivos[0]['adjetivo_'.$array_adj[0]])): ?>
                             <li>
-                                <button onclick="sendResp(1,'<?= $adjetivos[0]['select_cat_adj_one']; ?>', '<?= $adjetivos[0]['adjetivo_one']; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_one']; ?></button>
+                                <button onclick="sendResp(1,'<?= $adjetivos[0]['select_cat_adj_'.$array_adj[0]]; ?>', '<?= $adjetivos[0]['adjetivo_'.$array_adj[0]]; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_'.$array_adj[0]]; ?></button>
                             </li>
                             <?php
                                 endif;
-                                if(!empty($adjetivos[0]['adjetivo_two'])):
+                                if(!empty($adjetivos[0]['adjetivo_'.$array_adj[1]])):
                             ?>   
                             <li>
-                                <button onclick="sendResp(2,'<?= $adjetivos[0]['select_cat_adj_two']; ?>', '<?= $adjetivos[0]['adjetivo_two']; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_two']; ?></button>
+                                <button onclick="sendResp(2,'<?= $adjetivos[0]['select_cat_adj_'.$array_adj[1]]; ?>', '<?= $adjetivos[0]['adjetivo_'.$array_adj[1]]; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_'.$array_adj[1]]; ?></button>
                             </li>
                             <?php
                                 endif;
-                                if(!empty($adjetivos[0]['adjetivo_three'])):
+                                if(!empty($adjetivos[0]['adjetivo_'.$array_adj[2]])):
                             ?>
                             <li>
-                                <button onclick="sendResp(3,'<?= $adjetivos[0]['select_cat_adj_three']; ?>', '<?= $adjetivos[0]['adjetivo_three']; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_three']; ?></button>
+                                <button onclick="sendResp(3,'<?= $adjetivos[0]['select_cat_adj_'.$array_adj[2]]; ?>', '<?= $adjetivos[0]['adjetivo_'.$array_adj[2]]; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_'.$array_adj[2]]; ?></button>
                             </li>
                             <?php
                                 endif;
-                                if(!empty($adjetivos[0]['adjetivo_four'])):
+                                if(!empty($adjetivos[0]['adjetivo_'.$array_adj[3]])):
                             ?>
                             <li>
-                                <button onclick="sendResp(4,'<?= $adjetivos[0]['select_cat_adj_four']; ?>', '<?= $adjetivos[0]['adjetivo_four']; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_four']; ?></button>
+                                <button onclick="sendResp(4,'<?= $adjetivos[0]['select_cat_adj_'.$array_adj[3]]; ?>', '<?= $adjetivos[0]['adjetivo_'.$array_adj[3]]; ?>')" class="btn_resp"><?= $adjetivos[0]['adjetivo_'.$array_adj[3]]; ?></button>
                             </li>
                             <?php endif; ?>
                         </ul>
@@ -147,7 +149,55 @@
             </div>
 
             <div class="result">
+                <div class="graphs">
+                    <h4>Seu Resultado</h4>
+                    <div class="fi_div field_dom">
+                        <span>Dominância</span>
+                        <div class="bar dom_bar">
+                            <span class="dom_bar_progress">
+                                <span class="tooltip_progress dom_tooltip">20%</span>
+                            </span>
+                        </div>
+                    </div>
 
+                    <div class="fi_div field_inf">
+                        <span>Influência</span>
+                        <div class="bar inf_progress">
+                            <span class="inf_bar_progress"></span>
+                        </div>
+                    </div>
+
+                    <div class="fi_div field_est">
+                        <span>Estabilidade</span>
+                        <div class="bar est_bar">
+                            <span class="est_bar_progress"></span>
+                        </div>
+                    </div>
+
+                    <div class="fi_div field_conf">
+                        <span>Conformidade</span>
+                        <div class="bar con_bar">
+                            <span class="con_bar_progress"></span>
+                        </div>
+                    </div>
+                    <button id="bar_res">pregress bar</button>
+
+                    <script>
+                        const btn_res =  document.getElementById('bar_res');
+                        btn_res.addEventListener('click', () => {
+                            document.querySelector('.dom_bar_progress').style.width = "80%";
+                            document.querySelector('.dom_bar_progress').style.transition = "1s";
+                        });
+                    </script>
+                </div>
+
+                <div class="result_info">
+                    <p>Fator Predominante: <span class="result_word">CONFORMIDADE</span></p>
+                    <p>Esta dimensão enfatiza a possibilidade de trabalhar para assegurar a qualidade e a precisão em todas as tarefas.</p>
+                    <p><strong>Pontos Fortes: </strong> digno de confiança, prático, diplomata, objetivo, organizado e eficiente.</p>
+                    <p><strong>Pontos Fracos: </strong>egoísta, avarento, indeciso, desmotivado, preguiçoso e preocupado.</p>
+                    <button class="submit_result">Quero o Relatório do Teste (Grátis)</button>
+                </div>
             </div>
         </div>
 

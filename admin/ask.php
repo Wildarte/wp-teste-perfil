@@ -7,6 +7,8 @@
         $value_answer = $_POST['value_answer'];
         $answer = $_POST['answer'];
         $position = $_POST['position'];
+        $array_adj = ['one','two','three','four'];
+        $rand_adj = [];//variavel para armazenar nomes das variaveis
 
         if(!empty($value_answer) && !empty($answer) && !empty($position)):
 
@@ -35,7 +37,7 @@
                 default:
                     $adj_position = "";
             endswitch;
-
+            /*
             if($adjetivos[$in_prev]['select_cat_adj_'.$adj_position.''] != $value_answer || $adjetivos[$in_prev]['adjetivo_'.$adj_position.''] != $answer):
             
                 echo "Existe um diferente";
@@ -48,10 +50,10 @@
                 echo "adjetivo: ".$adjetivos[$in_prev]['adjetivo_'.$adj_position]."<br>";
                 echo "in_prev: ".$in_prev."<br>";
 
-            else:
+            else:*/
             
                 echo "adj_position: ".$adj_position."<br>";
-                echo "value_answer: ".$value_answer."<Br>";
+                echo "value_answer: ".$value_answer."<br>";
                 echo "answer: ".$answer."<br>";
                 echo "position: ".$position."<br>";
                 echo "select_adj: ".$adjetivos[$in_prev]['select_cat_adj_'.$adj_position.'']."<br>";
@@ -63,22 +65,27 @@
                     echo " | ".$num_question;
 
                     if(!empty($adjetivos[$num_question])):
-
+                        //echo "<h1>Variável: ";
+                        shuffle($array_adj);
+                        //for($i = 0; $i < 4; $i++){
+                        //    echo $array_adj[$i]." / ";
+                        //}
+                        //echo "</h1>";
                         echo "Número da questão: ".$num_question." | Contagem de perguntas: ".$count_adj;
                 
                         ?>
                         <ul class="resps">
                             <li>
-                                <button onclick="sendResp(1,'<?= $adjetivos[$num_question]['select_cat_adj_one']; ?>', '<?= $adjetivos[$num_question]['adjetivo_one']; ?>')" class="btn_resp"><?= $adjetivos[$num_question]['adjetivo_one'] ?></button>
+                                <button onclick="sendResp(1,'<?= $adjetivos[$num_question]['select_cat_adj_'.$array_adj[0]]; ?>', '<?= $adjetivos[$num_question]['adjetivo_'.$array_adj[0]]; ?>')" class="btn_resp"><?= $adjetivos[$num_question]['adjetivo_'.$array_adj[0]] ?></button>
                             </li>   
                             <li>
-                                <button onclick="sendResp(2,'<?= $adjetivos[$num_question]['select_cat_adj_two']; ?>', '<?= $adjetivos[$num_question]['adjetivo_two']; ?>')" class="btn_resp"><?= $adjetivos[$num_question]['adjetivo_two'] ?></button>
+                                <button onclick="sendResp(2,'<?= $adjetivos[$num_question]['select_cat_adj_'.$array_adj[1]]; ?>', '<?= $adjetivos[$num_question]['adjetivo_'.$array_adj[1]]; ?>')" class="btn_resp"><?= $adjetivos[$num_question]['adjetivo_'.$array_adj[1]] ?></button>
                             </li>
                             <li>
-                                <button onclick="sendResp(3,'<?= $adjetivos[$num_question]['select_cat_adj_three']; ?>', '<?= $adjetivos[$num_question]['adjetivo_three']; ?>')" class="btn_resp"><?= $adjetivos[$num_question]['adjetivo_three'] ?></button>
+                                <button onclick="sendResp(3,'<?= $adjetivos[$num_question]['select_cat_adj_'.$array_adj[2]]; ?>', '<?= $adjetivos[$num_question]['adjetivo_'.$array_adj[2]]; ?>')" class="btn_resp"><?= $adjetivos[$num_question]['adjetivo_'.$array_adj[2]] ?></button>
                             </li>
                             <li>
-                                <button onclick="sendResp(4,'<?= $adjetivos[$num_question]['select_cat_adj_four']; ?>', '<?= $adjetivos[$num_question]['adjetivo_four']; ?>')" class="btn_resp"><?= $adjetivos[$num_question]['adjetivo_four'] ?></button>
+                                <button onclick="sendResp(4,'<?= $adjetivos[$num_question]['select_cat_adj_'.$array_adj[3]]; ?>', '<?= $adjetivos[$num_question]['adjetivo_'.$array_adj[3]]; ?>')" class="btn_resp"><?= $adjetivos[$num_question]['adjetivo_'.$array_adj[3]] ?></button>
                             </li>
 
                             
@@ -93,13 +100,13 @@
 
                 else:
 
-                    echo "Acabaram as perguntas";
+                    echo "0";
                     //echo var_dump($adjetivos[$num_question]);
-                    echo " | ".$num_question;
+                    //echo " | ".$num_question;
                     //echo $page_id;
                 endif;
             
-            endif;
+            //endif;
 
         else:
             echo "Algo saiu errado";
