@@ -1,26 +1,30 @@
 <?php
-
+    
     // Template Name: Teste DISC
     get_header();
     
-    
-    
+    setup_session_start();
+
+    $_SESSION['d'] = 0;
+    $_SESSION['i'] = 0;
+    $_SESSION['s'] = 0;
+    $_SESSION['c'] = 0;
+
+    $_SESSION['contagem_questions'] = 0;
+
     $adjetivos = get_post_meta(get_the_ID(), 'area_adjetivos', true);
 
     $count_questions = count($adjetivos);
 
     //echo $adjetivos[1]['adjetivo_one'];
 
-    echo "<br>";
+    
 
     if(is_array($adjetivos)):
 
         //foreach($adjetivos as $adjetivo):
 
-            echo "<h4>".$adjetivos[0]['adjetivo_one']."</h4>";
-            echo "<h4>".$adjetivos[0]['adjetivo_two']."</h4>";
-            echo "<h4>".$adjetivos[0]['adjetivo_three']."</h4>";
-            echo "<h4>".$adjetivos[0]['adjetivo_four']."</h4>";
+           
 
         //endforeach;
 
@@ -37,7 +41,7 @@
             <div class="wizard_top">
                 <img src="<?= get_template_directory_uri() ?>/assets/img/barra-disc.png" alt="">
             </div>
-            <div class="wizard_text" style="display: none;">
+            <div class="wizard_text">
                 <header class="header_wizard_text">
                     <h3 class="wizard_title">Você está pronta(o) para conhecer seu perfil comportamental predominante?</h3>
                 </header>
@@ -58,7 +62,7 @@
                 </div>
                 
             </div>
-            <div class="f_ask" style="display: none;">
+            <div class="f_ask">
                 <div class="content_ask">
                     <div class="ask_top">
                         <p class="title_ask">Por qual motivo você está fazendo o teste DISC?</p>
@@ -148,57 +152,18 @@
                 </div>
             </div>
 
-            <div class="result">
-                <div class="graphs">
-                    <h4>Seu Resultado</h4>
-                    <div class="fi_div field_dom">
-                        <span>Dominância</span>
-                        <div class="bar dom_bar">
-                            <span class="dom_bar_progress">
-                                <span class="tooltip_progress dom_tooltip">20%</span>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="fi_div field_inf">
-                        <span>Influência</span>
-                        <div class="bar inf_progress">
-                            <span class="inf_bar_progress"></span>
-                        </div>
-                    </div>
-
-                    <div class="fi_div field_est">
-                        <span>Estabilidade</span>
-                        <div class="bar est_bar">
-                            <span class="est_bar_progress"></span>
-                        </div>
-                    </div>
-
-                    <div class="fi_div field_conf">
-                        <span>Conformidade</span>
-                        <div class="bar con_bar">
-                            <span class="con_bar_progress"></span>
-                        </div>
-                    </div>
-                    <button id="bar_res">pregress bar</button>
-
-                    <script>
-                        const btn_res =  document.getElementById('bar_res');
-                        btn_res.addEventListener('click', () => {
-                            document.querySelector('.dom_bar_progress').style.width = "80%";
-                            document.querySelector('.dom_bar_progress').style.transition = "1s";
-                        });
-                    </script>
-                </div>
-
-                <div class="result_info">
-                    <p>Fator Predominante: <span class="result_word">CONFORMIDADE</span></p>
-                    <p>Esta dimensão enfatiza a possibilidade de trabalhar para assegurar a qualidade e a precisão em todas as tarefas.</p>
-                    <p><strong>Pontos Fortes: </strong> digno de confiança, prático, diplomata, objetivo, organizado e eficiente.</p>
-                    <p><strong>Pontos Fracos: </strong>egoísta, avarento, indeciso, desmotivado, preguiçoso e preocupado.</p>
-                    <button class="submit_result">Quero o Relatório do Teste (Grátis)</button>
-                </div>
+            <div class="result" data-pro="3">
+                
             </div>
+            <script>
+                
+                
+
+                //let val = document.querySelector('.result');
+                //let valor = val.getAttribute('data-pro');
+                //val.style.border = `${valor}px solid`;
+                    //console.log(val);
+            </script>
         </div>
 
         <div class="social_share_box">

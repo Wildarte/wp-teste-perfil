@@ -334,7 +334,7 @@ ul.resps li button:hover{
 
 .result{
     padding: 40px;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
 }
 .graphs{
@@ -396,6 +396,27 @@ ul.resps li button:hover{
     position: relative;
     border-radius: 3px;
 }
+.inf_bar_progress{
+    width: 0%;
+    height: 100%;
+    background-color: yellow;
+    position: relative;
+    border-radius: 3px;
+}
+.est_bar_progress{
+    width: 0%;
+    height: 100%;
+    background-color: green;
+    position: relative;
+    border-radius: 3px;
+}
+.con_bar_progress{
+    width: 0%;
+    height: 100%;
+    background-color: blue;
+    position: relative;
+    border-radius: 3px;
+}
 
 .tooltip_progress{
     padding: 5px 10px;
@@ -403,7 +424,7 @@ ul.resps li button:hover{
     color: #fff!important;
     font-size: .8em!important;
     position: absolute;
-    background-color: #454545;
+    background-color: #333;
     top: -110%;
     right: 5px;
     z-index: 1;
@@ -419,6 +440,49 @@ ul.resps li button:hover{
     border-color: #333 transparent;
     content: "";
 }
+
+.r_info{
+    flex-basis: 50%;
+    padding-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+.r_info p{
+    width: 100%;
+    margin: 10px 0;
+}
+
+.btn_relatorio{
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00acee;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+.btn_relatorio:hover{
+    cursor: pointer;
+}
+.result_word{
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+.color_word_dominancia{
+    color: red;
+}
+.color_word_influencia{
+    color: yellow;
+}
+.color_word_estabilidade{
+    color: green;
+}
+.color_word_conformidade{
+    color: blue;
+}
+
 @media (max-width: 768px){
     .header_title{
         font-size: 2em;
@@ -439,6 +503,9 @@ ul.resps li button:hover{
         flex-basis: 100%;
     }
     .wizard_action{
+        flex-basis: 100%;
+    }
+    .graphs, .r_info{
         flex-basis: 100%;
     }
 }

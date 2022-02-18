@@ -12,6 +12,7 @@
         get_url('<?= get_template_directory_uri(); ?>');
         get_page_id(<?= get_the_ID(); ?>);
 
+        /*
         let <?= $GLOBALS['d']; ?> = 0;
         let <?= $GLOBALS['i']; ?> = 0;
         let <?= $GLOBALS['si']; ?> = 0;
@@ -39,6 +40,7 @@
                 console.log('<?= $GLOBALS['c']; ?>: '+<?= $GLOBALS['c']; ?>);
             }
         }
+        */
     </script>
 
 </body>

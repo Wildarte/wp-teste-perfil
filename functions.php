@@ -42,4 +42,17 @@
     
 
 
+    if(!function_exists('setup_session_start')):
+
+        function setup_session_start(){
+        
+            if(!session_id()) session_start();
+        
+        }
+        add_action('init', 'setup_session_start');
+
+    endif;
+
+    
+
 ?>

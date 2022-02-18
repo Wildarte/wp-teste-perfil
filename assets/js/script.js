@@ -86,6 +86,31 @@ function controllBar(num){
     });
 }
 
+function updateProgress(){
+    setTimeout(function(){
+        const dom_pro = document.querySelector('.dom_bar_progress');
+        const inf_pro = document.querySelector('.inf_bar_progress');
+        const est_pro = document.querySelector('.est_bar_progress');
+        const con_pro = document.querySelector('.con_bar_progress');
+
+        let valor1 = dom_pro.getAttribute('data-progress');
+        let valor2 = inf_pro.getAttribute('data-progress');
+        let valor3 = est_pro.getAttribute('data-progress');
+        let valor4 = con_pro.getAttribute('data-progress');
+
+        document.querySelector('.dom_bar_progress').style.width = `${valor1}%`;
+        document.querySelector('.dom_bar_progress').style.transition = '2s';
+
+        document.querySelector('.inf_bar_progress').style.width = `${valor2}%`;
+        document.querySelector('.inf_bar_progress').style.transition = '2s';
+
+        document.querySelector('.est_bar_progress').style.width = `${valor3}%`;
+        document.querySelector('.est_bar_progress').style.transition = '2s';
+
+        document.querySelector('.con_bar_progress').style.width = `${valor4}%`;
+        document.querySelector('.con_bar_progress').style.transition = '2s';
+    },250);
+}
 
 function reqAsk(url, num, page_id, value, resp, pos){
 
@@ -95,14 +120,53 @@ function reqAsk(url, num, page_id, value, resp, pos){
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function(){
         let resp = this.responseText;
+
+        if(resp.includes('ul class="resps"')){
+            document.getElementsByClassName('box_resps')[0].innerHTML = resp;
+        }else{
+            document.querySelector('.f_ask').classList.remove('show');
+            document.querySelector('.result').style.display = 'flex';
+            document.querySelector('.result').innerHTML = this.response;
+            updateProgress();
+        }
+
+        /*
         switch(resp){
-            case 0:
-                "";
+            case "0":
+                
+                const xmlhttp2 = new XMLHttpRequest();
+                xmlhttp2.onload = function(){
+                    let resp2 = this.responseText;
+                    document.querySelector('.result .graphs').append(resp2);
+                }
+
+                xmlhttp2.open("get", url, true);
+                //xmlhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp2.send();
+
+                /*
+                document.querySelector('.f_ask').classList.remove('show');
+                document.querySelector('.result').style.display = "flex";
+                alert('test');
+
+                document.querySelector('.dom_bar_progress').style.width = "70%";
+                document.querySelector('.dom_bar_progress').style.transition = "1.6s";
+
+                document.querySelector('.inf_bar_progress').style.width = "30%";
+                document.querySelector('.inf_bar_progress').style.transition = "1.6s";
+
+                document.querySelector('.est_bar_progress').style.width = "60%";
+                document.querySelector('.est_bar_progress').style.transition = "1.6s";
+
+                document.querySelector('.con_bar_progress').style.width = "90%";
+                document.querySelector('.con_bar_progress').style.transition = "1.6s";
+                
             break;
             default:
                 document.getElementsByClassName('box_resps')[0].innerHTML = resp;
 
         }
+        */
     }
     xmlhttp.open("post", url, true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -113,7 +177,7 @@ function reqAsk(url, num, page_id, value, resp, pos){
 function sendResp(pos, value, resp){
     //e.preventDefault();
     reqAsk(`${global_url}/admin/ask.php`, count, page_id, value, resp, pos);
-    calcResult(value);
+    //calcResult(value);
 
     //aumenta a barra de progresso
     const max_progress = parseInt(document.getElementById('max_progress').innerText);
