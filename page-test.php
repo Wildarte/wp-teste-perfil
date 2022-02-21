@@ -18,13 +18,9 @@
 
     //echo $adjetivos[1]['adjetivo_one'];
 
-    
-
     if(is_array($adjetivos)):
 
         //foreach($adjetivos as $adjetivo):
-
-           
 
         //endforeach;
 
@@ -63,6 +59,7 @@
                 
             </div>
             <div class="f_ask">
+                <!-- 
                 <div class="content_ask">
                     <div class="ask_top">
                         <p class="title_ask">Por qual motivo você está fazendo o teste DISC?</p>
@@ -97,7 +94,7 @@
                         <button class="continue_test" id="continue_test">Continuar para o teste</button>
                     </div>
                 </div>
-                
+                 -->
 
                 <div class="box_test">
                     <div class="box_top">

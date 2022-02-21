@@ -63,7 +63,7 @@
                 $fator_predominante = "Conformidade";
             }
             ?>
-            <div class="graphs">
+                <div class="graphs">
                     <h4>Seu Resultado</h4>
                     <div class="fi_div field_dom">
                         <span>Dominância</span>

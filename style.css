@@ -425,19 +425,20 @@ ul.resps li button:hover{
     font-size: .8em!important;
     position: absolute;
     background-color: #333;
-    top: -110%;
-    right: 5px;
+    top: 2px;
+    right: -68px;
     z-index: 1;
 }
 .tooltip_progress::after{
     position: absolute;
-    bottom: -5px;
-    left: 13px;
+    top: 6px;
+    left: -8px;
     display: block;
     width: 0;
-    border-width: 5px 5px 0;
+    border-width: 5px 5px 5px 5px;
     border-style: solid;
-    border-color: #333 transparent;
+    border-color: transparent;
+    border-right-color: #333;
     content: "";
 }
 

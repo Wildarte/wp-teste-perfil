@@ -1,6 +1,7 @@
 const btn_share = document.querySelectorAll('.share');
 const btn_start = document.getElementById('btn_wizard');
 const conts_btn = document.getElementById('continue_test');
+let nextOk = false;
 
 let global_url = "";
 function get_url(url){
@@ -35,12 +36,21 @@ btn_share.forEach((item) => {
 document.addEventListener('DOMContentLoaded', function(){
     btn_start.innerText = "Começar o teste";
 
+    /*
     btn_start.addEventListener('click', () => {
         document.querySelector('.wizard_text').classList.add('hidden');
         document.querySelector('.f_ask').classList.add('show');
     });
-    conts_btn.addEventListener('click', (e) => {
+    */
+    
+    btn_start.addEventListener('click', (e) => {
         e.preventDefault();
+
+        document.querySelector('.wizard_text').classList.add('hidden');
+        document.querySelector('.f_ask').classList.add('show');
+        document.querySelector('.box_test').classList.add('show');
+
+        /*
         verifica_check = false;
         document.querySelectorAll('input[class="pesquisa"]').forEach((item) => {
             if(item.checked){
@@ -49,10 +59,11 @@ document.addEventListener('DOMContentLoaded', function(){
         });
         if(verifica_check){
             document.querySelector('.content_ask').classList.add('hidden');
-        document.querySelector('.box_test').classList.add('show');
+            document.querySelector('.box_test').classList.add('show');
         }else{
             alert('Primeiro selecione um alternativa');
         }
+        */
         
     });
 });
@@ -123,11 +134,14 @@ function reqAsk(url, num, page_id, value, resp, pos){
 
         if(resp.includes('ul class="resps"')){
             document.getElementsByClassName('box_resps')[0].innerHTML = resp;
+            changeMouse();
+            reChangeMouse();
         }else{
             document.querySelector('.f_ask').classList.remove('show');
             document.querySelector('.result').style.display = 'flex';
             document.querySelector('.result').innerHTML = this.response;
             updateProgress();
+            reChangeMouse();
         }
 
         /*
@@ -174,7 +188,33 @@ function reqAsk(url, num, page_id, value, resp, pos){
 
 }
 
+
+//function that change the icon mouse and disable buttons
+function changeMouse(){
+    document.body.style.cursor = "wait";
+    const btns = document.querySelectorAll('ul.resps li button');
+    btns.forEach((btn) => {
+        btn.disabled = true;
+    })
+}
+
+
+//function that change button mouse to default and enable buttons
+function reChangeMouse(){
+    setTimeout(function(){
+        document.body.style.cursor = "default";
+        const btns = document.querySelectorAll('ul.resps li button');
+        btns.forEach((btn) => {
+            btn.disabled = false;
+        });
+    }, 400);
+   
+}
+
 function sendResp(pos, value, resp){
+    
+    changeMouse();
+
     //e.preventDefault();
     reqAsk(`${global_url}/admin/ask.php`, count, page_id, value, resp, pos);
     //calcResult(value);
