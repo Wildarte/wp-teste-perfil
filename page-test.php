@@ -148,10 +148,40 @@
                     
                 </div>
             </div>
-
-            <div class="result" data-pro="3">
+            
+            <div class="result_over" style="display: none; flex-wrap: wrap">
+                <div class="result" data-pro="3">
+                
+                </div>
+                <div class="" style="width: 100%; padding: 10px 80px 20px; margin-bottom: 20px; display: flex; justify-content: flex-end">
+                    <button style="" class="btn_relatorio" id="btn_relatorio">Quero um relatório do teste (grátis)</button>
+                </div>
                 
             </div>
+            
+
+            <div class="request_result">
+                <div class="request_result_left">
+                    <h3 class="request_title">Receba seu relatório:</h3>
+                    <p>Insira seu nome e seu melhor e-mail nos campos ao lado para receber gratuitamente o resultado do seu teste de perfil comportamental.</p>
+                    <p>Você também pode enviar uma cópia do seu relatório para outra pessoa, como uma empresa que tenha lhe solicitado o teste ou para seu coach, por exemplo.</p>
+                    <p>Para isso, basta preencher (no campo especificado) também o e-mail de quem deseja que receba a cópia do seu relatório DISC.</p>
+                </div>
+                <div class="request_result_right">
+                    <div class="row_input">
+                        <label for="nome">nome*</label>
+                        <input type="text" name="nome" id="nome" required>
+                    </div>
+                    <div class="row_input">
+                        <label for="email">email*</label>
+                        <input type="email" name="email" id="" required>
+                    </div>
+                    <div class="row_input">
+                        <button class="btn_send_result">Enviar meu relatótio</button>
+                    </div>
+                </div>
+            </div>
+        
             <script>
                 
                 

@@ -1,6 +1,9 @@
 const btn_share = document.querySelectorAll('.share');
 const btn_start = document.getElementById('btn_wizard');
 const conts_btn = document.getElementById('continue_test');
+const btn_relat = document.getElementsByClassName('btn_relatorio');
+
+
 let nextOk = false;
 
 let global_url = "";
@@ -67,6 +70,13 @@ document.addEventListener('DOMContentLoaded', function(){
         
     });
 });
+
+for(let i = 0; i < btn_relat.length; i++){
+    btn_relat[i].addEventListener('click', function(){
+        document.querySelector('.result_over').style.display = "none";
+        document.querySelector('.request_result').style.display = "flex";
+    });
+}
 
 let count = 1;//controle do progresso da barra
 function controllBar(num){
@@ -138,6 +148,7 @@ function reqAsk(url, num, page_id, value, resp, pos){
             reChangeMouse();
         }else{
             document.querySelector('.f_ask').classList.remove('show');
+            document.querySelector('.result_over').style.display = 'flex';
             document.querySelector('.result').style.display = 'flex';
             document.querySelector('.result').innerHTML = this.response;
             updateProgress();

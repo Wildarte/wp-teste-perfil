@@ -156,9 +156,12 @@
                     <p>Esta dimensão enfatiza a possibilidade de trabalhar para assegurar a qualidade e a precisão em todas as tarefas.</p>
                     <p><strong>Pontos Fortes: </strong> digno de confiança, prático, diplomata, objetivo, organizado e eficiente.</p>
                     <p><strong>Pontos Fracos: </strong>egoísta, avarento, indeciso, desmotivado, preguiçoso e preocupado.</p>
-                    <button class="btn_relatorio">Quero um relatório do teste (grátis)</button>
+                    
                 </div>
             <script>
+
+                    
+
                     //let val = document.querySelector('.dom_bar_progress').getAttribute('data-progress');
                     //console.log(val);
                     //document.getElementsByClassName('.dom_bar_progress')[0].style.width = "20%";

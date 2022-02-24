@@ -334,6 +334,7 @@ ul.resps li button:hover{
 
 .result{
     padding: 40px;
+    padding-bottom: 5px;
     display: none;
     flex-wrap: wrap;
 }
@@ -455,7 +456,6 @@ ul.resps li button:hover{
 }
 
 .btn_relatorio{
-    width: 100%;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -484,6 +484,49 @@ ul.resps li button:hover{
     color: blue;
 }
 
+
+
+.request_result{
+    display: none;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+.request_result_left, .request_result_right{
+    flex-basis: calc(50% - 20px);
+    margin: 10px;
+    padding: 10px 20px;
+}
+h3.request_title{
+    margin-bottom: 10px;
+}
+.request_result_left p{
+    margin:10px 0;
+}
+.row_input{
+    width: 100%;
+    margin: 20px 0;
+}
+.row_input input{
+    width: 100%;
+    padding: 8px;
+    border: 1px solid#888;
+    border-radius: 4px;
+    outline: none;
+}
+.btn_send_result{
+    border: none;
+    padding: 10px 20px;
+    background-color: #3276B1;
+    font-size: 1em;
+    color: #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+.btn_send_result:hover{
+    cursor: pointer;
+}
+
 @media (max-width: 768px){
     .header_title{
         font-size: 2em;
@@ -508,6 +551,14 @@ ul.resps li button:hover{
     }
     .graphs, .r_info{
         flex-basis: 100%;
+    }
+    .request_result{
+        padding: 10px;
+        padding-top: 40px;
+    }
+    .request_result_left, .request_result_right{
+        flex-basis: calc(100% - 20px);
+        padding: 0;
     }
 }
 
