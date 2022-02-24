@@ -53,15 +53,41 @@
 
 
             $fator_predominante = "";
-            if($r_d > $r_i && $r_d > $r_s && $r_d > $r_c){
-                $fator_predominante = "Dominância";
-            }elseif($r_i > $r_d && $r_i > $r_s && $r_i > $r_c){
-                $fator_predominante = "Influência";
-            }elseif($r_s > $r_d && $r_s > $r_i && $r_s > $r_c){
-                $fator_predominante = "Estabilidade";
+            if($r_d >= $r_i && $r_d >= $r_s && $r_d >= $r_c){
+                if($r_d == $r_i){
+                    $fator_predominante = "Dominância";
+                }elseif($r_d == $r_s){
+                    $fator_predominante = "Dominância";
+                }elseif($_d == $r_c){
+                    $fator_predominante = "Dominância";
+                }else{
+                    $fator_predominante = "Dominância";
+                }
+            }elseif($r_i >= $r_d && $r_i >= $r_s && $r_i >= $r_c){
+                if($r_i == $r_d){
+                    $fator_predominante = "Influência";
+                }else if($r_i == $r_s){
+                    $fator_predominante = "Influência";
+                }elseif($r_i == $r_c){
+                    $fator_predominante = "Influência";
+                }else{
+                    $fator_predominante = "Influência";
+                }
+            }elseif($r_s >= $r_d && $r_s >= $r_i && $r_s >= $r_c){
+                if($r_s == $r_d){
+                    $fator_predominante = "Estabilidade";
+                }elseif($r_s == $r_i){
+                    $fator_predominante = "Estabilidade";
+                }elseif($r_s == $r_c){
+                    $fator_predominante = "Estabilidade";
+                }else{
+                    $fator_predominante = "Estabilidade";
+                }
             }else{
                 $fator_predominante = "Conformidade";
             }
+
+            //echo "Domin: ".$r_d." / Influ: ".$r_i." / Estab: ".$r_s." / Conform: ".$r_c."<br>";
             ?>
                 <div class="graphs">
                     <h4>Seu Resultado</h4>
