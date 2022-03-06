@@ -3,6 +3,7 @@
     require '../../../../wp-config.php';
 
     
+    
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -87,7 +88,142 @@
                 $fator_predominante = "Conformidade";
             }
 
+
+            $results_test[0] = $r_d;
+            $results_test[1] = $r_i;
+            $results_test[2] = $r_s;
+            $results_test[3] = $r_c;
+
+
+            function checkResults($first, $second, $third, $fourth, $word1, $word2, $word3, $word4){
+                if($first >= $second && $first >= $third && $first >= $fourth){
+    
+                    $_SESSION['first_default'] = $word1;
+
+                    if($second >= 20){
+                        if($second >= $third && $second >= $fourth){
+                            
+                            $_SESSION['second_default'] = $word2;
+
+                            if($third >= 20){
+                                if($third >= $fourth){
+                                    $_SESSION['third_default'] = $word3;
+                                }else{
+                                    $_SESSION['fourth_default'] = $word4;
+                                }
+                            }else if($fourth > 20){
+                                if($fourth >= $third){
+                                    $_SESSION['third_default'] = $word4;
+                                }else{
+                                    $_SESSION['fourth_default'] = $word3;
+                                }
+                            }            
+
+                        }
+                    }else if($third >= 20){
+                        if($third >= $second && $third >= $fourth){
+
+                            $_SESSION['second_default'] = $word3;
+
+                            if($second >= 20){
+                                if($second >= $fourth){
+                                    $_SESSION['third_default'] = $word2;
+                                }
+                                else{
+                                    $_SESSION['fourth_default'] = $word4;
+                                }
+                            }else if($fourth >= 20){
+                                if($fourth >= $second){
+                                    $_SESSION['third_default'] = $word4;
+                                }
+                                else{
+                                    $_SESSION['fourth_default'] = $word2;
+                                }
+                            }       
+
+                        }
+                    }else if($fourth >= 20){
+                        if($fourth >= $second && $fourth >= $third){
+
+                            $_SESSION['second_default'] = $word4;
+
+                            if($second >= 20){
+                                if($second >= $third){
+                                    $_SESSION['third_default'] = $word2;
+                                }else{
+                                    $_SESSION['fourth_default'] = $word3;
+                                }
+                            }else if($third >= 20){
+                                if($third >= $second){
+                                    $_SESSION['third_default'] = $word3;
+                                }else{
+                                    $_SESSION['fourth_default'] = $word2;
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+
+            $w1 = "dominancia";
+            $w2 = "influencia";
+            $w3 = "estabilidade";
+            $w4 = "conformidade";
+
+        
+            checkResults(round($r_c), round($r_d), round($r_i), round($r_s), $w4, $w1, $w2, $w3);
+            checkResults(round($r_s), round($r_c), round($r_d), round($r_i), $w3, $w4, $w1, $w2);
+            checkResults(round($r_i), round($r_s), round($r_c), round($r_d), $w2, $w3, $w4, $w1);
+            checkResults(round($r_d), round($r_i), round($r_s), round($r_c), $w1, $w2, $w3, $w4);
+
+
+
+            /*
+            if($results_test[0] >= $results_test[1]){
+                if($results_test[0] >= $results_test[2]){
+                    if($results_test[0] >= $results_test[3] ){
+
+                        $_SESSION['first_default'] = "dominancia";
+
+                        if($results_test[1] > 20){
+                            if($results_test[1] >= $results_test[2]){
+                                if($results_test[1] >= $results_test[3]){
+    
+                                    $_SESSION['second_default'] = "influencia";
+
+                                    if($results_test[2] > 20 && $results_test[2] > $results_test[3]){
+                                        $_SESSION['third_default'] = 'estabilidade';
+                                        $_SESSION['fourth_default'] = 'conformidade';
+                                    }
+    
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            */
+
             //echo "Domin: ".$r_d." / Influ: ".$r_i." / Estab: ".$r_s." / Conform: ".$r_c."<br>";
+
+            ?>
+            <style>
+                h2{
+                    width: 100%;
+                }
+            </style>
+            <?php
+            echo "<h2>primeiro: ".$_SESSION["first_default"]."</h2> <br>";
+            echo "<h2>segundo: ".$_SESSION["second_default"]."</h2><br>";
+            echo "<h2>terceiro: ".$_SESSION["third_default"]."</h2> <br>";
+            echo "<h2>quarto: ".$_SESSION["fourth_default"]."</h2 ><br>";
+
+            echo "Dom ".$r_d;
+            echo "Inf ".$r_i;
+            echo "Est ".$r_s;
+            echo "Conf ".$r_c;
             ?>
                 <div class="graphs">
                     <h4>Seu Resultado</h4>
@@ -96,6 +232,7 @@
                         <div class="bar dom_bar">
                             <span class="dom_bar_progress" data-progress="<?= round($r_d) ?>">
                                 <span class="tooltip_progress dom_tooltip"><?= $r_d ?>%</span>
+                                <input type="hidden" name="input_dom" value="<?= round($r_d); ?>">
                             </span>
                         </div>
                     </div>
@@ -105,6 +242,7 @@
                         <div class="bar inf_progress">
                             <span class="inf_bar_progress" data-progress="<?= round($r_i) ?>">
                                 <span class="tooltip_progress inf_tooltip"><?= $r_i ?>%</span>
+                                <input type="hidden" name="input_inf" value="<?= round($r_d); ?>">
                             </span>
                         </div>
                     </div>
@@ -114,6 +252,7 @@
                         <div class="bar est_bar">
                             <span class="est_bar_progress" data-progress="<?= round($r_s) ?>">
                                 <span class="tooltip_progress est_tooltip"><?= $r_s ?>%</span>
+                                <input type="hidden" name="input_est" value="<?= round($r_d); ?>">
                             </span>
                         </div>
                     </div>
@@ -123,6 +262,7 @@
                         <div class="bar con_bar">
                             <span class="con_bar_progress" data-progress="<?= round($r_c) ?>">
                                 <span class="tooltip_progress con_tooltip"><?= $r_c ?>%</span>
+                                <input type="hidden" name="input_con" value="<?= round($r_d); ?>">
                             </span>
                         </div>
                     </div>
@@ -215,10 +355,7 @@
                     if($num_question < $count_adj):
                         //echo " | ".$num_question;
 
-                        //echo "<h2>D: ".$_SESSION["d"]."</h2>";
-                        //echo "<h2>I: ".$_SESSION["i"]."</h2>";
-                        //echo "<h2>S: ".$_SESSION["s"]."</h2>";
-                        //echo "<h2>C: ".$_SESSION["c"]."</h2>";
+                        
 
                         if(!empty($adjetivos[$num_question])):
                             //echo "<h1>Variável: ";

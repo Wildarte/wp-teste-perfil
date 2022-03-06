@@ -53,6 +53,9 @@
 
     endif;
 
+    add_theme_support('custom-logo');
     
+
+    require('admin/panel.php');
 
 ?>

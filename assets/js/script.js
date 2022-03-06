@@ -2,6 +2,7 @@ const btn_share = document.querySelectorAll('.share');
 const btn_start = document.getElementById('btn_wizard');
 const conts_btn = document.getElementById('continue_test');
 const btn_relat = document.getElementsByClassName('btn_relatorio');
+const btn_send_relat = document.getElementById('btn_send_result');
 
 
 let nextOk = false;
@@ -256,3 +257,30 @@ function sendResp(pos, value, resp){
     }
 }
 
+
+btn_send_relat.addEventListener('click', function(e){
+
+    e.preventDefault();
+
+    let nome = document.getElementById('input_nome').value;
+    let email = document.getElementById('input_email').value;
+
+    let hid1 = document.getElementById('hid1').value;
+    let hid2 = document.getElementById('hid2').value;
+
+    let params = "nome="+nome+"&email="+email+"&null1="+hid1+"&null2="+hid2;
+
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onload = function(){
+
+        let resp = this.response;
+
+        document.getElementById('resp_id').innerHTML = resp;
+
+    }
+    xhttp.open("post", global_url+'/submit_form.php', true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(params);
+
+});

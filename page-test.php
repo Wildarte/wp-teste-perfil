@@ -10,11 +10,16 @@
     $_SESSION['s'] = 0;
     $_SESSION['c'] = 0;
 
+    $_SESSION['first_default'] = "";
+    $_SESSION['second_default'] = "";
+    $_SESSION['third_default'] = "";
+    $_SESSION['fourth_default'] = "";
+
     $_SESSION['contagem_questions'] = 0;
 
     $adjetivos = get_post_meta(get_the_ID(), 'area_adjetivos', true);
 
-    $count_questions = count($adjetivos);
+    if(is_array($adjetivos)) $count_questions = count($adjetivos);
 
     //echo $adjetivos[1]['adjetivo_one'];
 
@@ -25,9 +30,9 @@
         //endforeach;
 
     endif;
-
-?>
     
+?>
+
     <header class="header_top_area">
         <h1 class="header_title">Teste Disc</h1>
         <h2 class="header_subtitle">Avaliação de Perfil Comportamental gratuito.</h2>
@@ -168,17 +173,22 @@
                     <p>Para isso, basta preencher (no campo especificado) também o e-mail de quem deseja que receba a cópia do seu relatório DISC.</p>
                 </div>
                 <div class="request_result_right">
+                    <form action="">
                     <div class="row_input">
                         <label for="nome">nome*</label>
-                        <input type="text" name="nome" id="nome" required>
+                        <input type="text" name="nome" id="input_nome" required>
+                        <input type="hidden" name="hid1" id="hid1">
                     </div>
                     <div class="row_input">
                         <label for="email">email*</label>
-                        <input type="email" name="email" id="" required>
+                        <input type="email" name="email" id="input_email" required>
+                        <input type="hidden" name="hid2" id="hid2">
                     </div>
                     <div class="row_input">
-                        <button class="btn_send_result">Enviar meu relatótio</button>
+                        <span id="resp_id">resposta:</span>
+                        <button class="btn_send_result" id="btn_send_result">Enviar meu relatótio</button>
                     </div>
+                    </form>
                 </div>
             </div>
         
