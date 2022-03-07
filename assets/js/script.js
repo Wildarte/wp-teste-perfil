@@ -262,13 +262,23 @@ btn_send_relat.addEventListener('click', function(e){
 
     e.preventDefault();
 
+    this.innerText = "Enviando..."
+
+    //valores ocultos
     let nome = document.getElementById('input_nome').value;
     let email = document.getElementById('input_email').value;
+
+
+    let input_dom = document.getElementById('input_dom').value;
+    let input_inf = document.getElementById('input_inf').value;
+    let input_est = document.getElementById('input_est').value;
+    let input_con = document.getElementById('input_con').value;
+
 
     let hid1 = document.getElementById('hid1').value;
     let hid2 = document.getElementById('hid2').value;
 
-    let params = "nome="+nome+"&email="+email+"&null1="+hid1+"&null2="+hid2;
+    let params = "nome="+nome+"&email="+email+"&null1="+hid1+"&null2="+hid2+"&input_dom="+input_dom+"&input_inf="+input_inf+"&input_est="+input_est+"&input_con="+input_con+"&page_id="+page_id+"&name="+nome+"&email="+email;
 
     let xhttp = new XMLHttpRequest();
 
@@ -277,6 +287,8 @@ btn_send_relat.addEventListener('click', function(e){
         let resp = this.response;
 
         document.getElementById('resp_id').innerHTML = resp;
+
+        btn_send_relat.innerText = "Enviar meu relatótio";
 
     }
     xhttp.open("post", global_url+'/submit_form.php', true);

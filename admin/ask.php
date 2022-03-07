@@ -224,6 +224,104 @@
             echo "Inf ".$r_i;
             echo "Est ".$r_s;
             echo "Conf ".$r_c;
+
+            //check valor de cada variavel para atribuir os títulos do padrões por email
+$t1 = ""; 
+$t2 = ""; 
+$t3 = ""; 
+$t4 = ""; 
+
+
+//check a primeira varivel
+switch($_SESSION['first_default']):
+    case "dominancia":
+        $t1 = "Dominância";
+    break;
+    case "influencia":
+        $t1 = "Influência";
+    break;
+    case "estabilidade":
+        $t1 = "Estabilidade";
+    break;
+    case "conformidade":
+        $t1 = "Conformidade";
+    default:
+        "";
+endswitch;
+
+
+//check a segunda variavel
+switch($_SESSION['second_default']):
+    case "dominancia":
+        $t2 = "Dominância";
+    break;
+    case "influencia":
+        $t2 = "Influência";
+    break;
+    case "estabilidade":
+        $t2 = "Estabilidade";
+    break;
+    case "conformidade":
+        $t2 = "Conformidade";
+    default:
+        "";
+endswitch;
+
+
+//check a terceira variavel
+switch($_SESSION['third_default']):
+    case "dominancia":
+        $t3 = "Dominância";
+    break;
+    case "influencia":
+        $t3 = "Influência";
+    break;
+    case "estabilidade":
+        $t3 = "Estabilidade";
+    break;
+    case "conformidade":
+        $t3 = "Conformidade";
+    default:
+        "";
+endswitch;
+
+
+
+//check a quarta variavel
+switch($_SESSION['fourth_default']):
+    case "dominancia":
+        $t4 = "Dominância";
+    break;
+    case "influencia":
+        $t4 = "Influência";
+    break;
+    case "estabilidade":
+        $t4 = "Estabilidade";
+    break;
+    case "conformidade":
+        $t4 = "Conformidade";
+    default:
+        "";
+endswitch;
+
+
+
+$content = "";
+
+if(($_SESSION['first_default'] != "")){
+    $content = $content."<tr><td><h2>".$t1."</h2></td></tr><tr><td>".get_post_meta($page_id, 'text_email_'.$_SESSION['first_default'], true)."</td></tr>";
+}
+if(!empty($_SESSION['second_default'])){
+    $content = $content."<tr><td><h2>".$t2."</h2></td></tr><tr><td>".get_post_meta($page_id, 'text_email_'.$_SESSION['second_default'], true)."</td></tr>";
+}
+if(!empty($_SESSION['third_default'])){
+    $content = $content."<tr><td><h2>".$t3."</h2></td></tr><tr><td>".get_post_meta($page_id, 'text_email_'.$_SESSION['third_default'], true)."</td></tr>";
+}
+if(!empty($_SESSION['fourth_default'])){
+    $content = $content."<tr><td><h2>".$t4."</h2></td></tr><tr><td>".get_post_meta($page_id, 'text_email_'.$_SESSION['fourth_default'], true)."</td></tr>";
+}
+
+echo $content;
             ?>
                 <div class="graphs">
                     <h4>Seu Resultado</h4>
@@ -232,7 +330,7 @@
                         <div class="bar dom_bar">
                             <span class="dom_bar_progress" data-progress="<?= round($r_d) ?>">
                                 <span class="tooltip_progress dom_tooltip"><?= $r_d ?>%</span>
-                                <input type="hidden" name="input_dom" value="<?= round($r_d); ?>">
+                                <input type="hidden" name="input_dom" id="input_dom" value="<?= round($r_d); ?>">
                             </span>
                         </div>
                     </div>
@@ -242,7 +340,7 @@
                         <div class="bar inf_progress">
                             <span class="inf_bar_progress" data-progress="<?= round($r_i) ?>">
                                 <span class="tooltip_progress inf_tooltip"><?= $r_i ?>%</span>
-                                <input type="hidden" name="input_inf" value="<?= round($r_d); ?>">
+                                <input type="hidden" name="input_inf" id="input_inf" value="<?= round($r_i); ?>">
                             </span>
                         </div>
                     </div>
@@ -252,7 +350,7 @@
                         <div class="bar est_bar">
                             <span class="est_bar_progress" data-progress="<?= round($r_s) ?>">
                                 <span class="tooltip_progress est_tooltip"><?= $r_s ?>%</span>
-                                <input type="hidden" name="input_est" value="<?= round($r_d); ?>">
+                                <input type="hidden" name="input_est" id="input_est" value="<?= round($r_s); ?>">
                             </span>
                         </div>
                     </div>
@@ -262,7 +360,7 @@
                         <div class="bar con_bar">
                             <span class="con_bar_progress" data-progress="<?= round($r_c) ?>">
                                 <span class="tooltip_progress con_tooltip"><?= $r_c ?>%</span>
-                                <input type="hidden" name="input_con" value="<?= round($r_d); ?>">
+                                <input type="hidden" name="input_con" id="input_con" value="<?= round($r_c); ?>">
                             </span>
                         </div>
                     </div>
@@ -399,7 +497,7 @@
                         //echo var_dump($adjetivos[$num_question]);
                         //echo " | ".$num_question;
                         //echo $page_id;
-                        session_destroy();
+                        //session_destroy();
                     endif;
                 
                 //endif;

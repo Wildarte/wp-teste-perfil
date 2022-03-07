@@ -185,7 +185,7 @@
                         <input type="hidden" name="hid2" id="hid2">
                     </div>
                     <div class="row_input">
-                        <span id="resp_id">resposta:</span>
+                        <span id="resp_id"></span>
                         <button class="btn_send_result" id="btn_send_result">Enviar meu relatótio</button>
                     </div>
                     </form>
