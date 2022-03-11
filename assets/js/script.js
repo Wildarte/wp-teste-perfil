@@ -25,6 +25,13 @@ function get_page_id(page){
 }
 
 
+let get_action_pos_send = "";
+let get_link_pos_send = "";
+let get_text_pos_send = "";
+let get_text_btn_pos_send = "";
+let get_link_btn_pos_send = "";
+
+
 btn_share.forEach((item) => {
     item.addEventListener('mouseover', function(){
         this.querySelector('span.s').classList.remove('closeShare');
@@ -262,7 +269,8 @@ btn_send_relat.addEventListener('click', function(e){
 
     e.preventDefault();
 
-    this.innerText = "Enviando..."
+    this.innerText = "Enviando...";
+    //btn_send_relat.innerText = "";
 
     //valores ocultos
     let nome = document.getElementById('input_nome').value;
@@ -286,9 +294,23 @@ btn_send_relat.addEventListener('click', function(e){
 
         let resp = this.response;
 
-        document.getElementById('resp_id').innerHTML = resp;
+        if(resp == 1){
+            document.getElementById('resp_id').innerHTML = '<p style="color: green">Relatório enviado</p>';
 
-        btn_send_relat.innerText = "Enviar meu relatótio";
+            btn_send_relat.innerText = "Enviar meu relatótio";
+    
+            if(get_action_pos_send == "on" && get_link_pos_send != ""){
+                window.location.href = get_link_pos_send;
+            }else{
+                document.querySelector('.request_result').innerHTML = "<h2 style='text-align: center; margin 40px auto 20px; padding: 100px 10px; font-weight: 300'>"+get_text_pos_send+"</h2>"+
+                "<a class='btn_pos_send' href='"+get_link_btn_pos_send+"'>"+get_text_btn_pos_send+"</a>";
+            }
+        }else{
+        document.getElementById('resp_id').innerHTML = "<p style='color: red'>"+resp+"</p>";
+            btn_send_relat.innerText = "Enviar meu relatótio";
+        }
+
+        
 
     }
     xhttp.open("post", global_url+'/submit_form.php', true);

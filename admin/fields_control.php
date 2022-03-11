@@ -2,6 +2,7 @@
 
 function cmb2_fields_teste(){
 
+
     $cmb2_area_teste = new_cmb2_box([
         'id' => 'area_teste',
         'title' => 'Perguntas',
@@ -145,10 +146,119 @@ function cmb2_fields_teste(){
         ),
     ]);
 
+    //=====================================================================================================================================
+
+
+    $cmb_resumo_result = new_cmb2_box([
+        'id' => 'area_resumo_result',
+        'title' => 'Informações dos resultados',
+        'object_types' => 'page',
+        'show_on' => [
+            'key' => 'page-template',
+            'value' => 'page-test.php'
+        ]
+    ]);
+
+    $cmb_resumo_result->add_field([
+        'name' => '<h1>Resumo sobre <strong>Dominância</strong></h1>',
+        'id' => 'resumo_dominancia',
+        'desc' => 'Coloque aqui um resumo sobre a dominância (será exibido no resultado do teste)',
+        'type' => 'textarea'
+    ]);
+
+    $cmb_resumo_result->add_field([
+        'name' => 'Pontos fortes de <strong>Dominância</strong></p>',
+        'id' => 'ponto_forte_dominancia',
+        'desc' => 'Descreva aqui os pontos fortes de dominância <strong>separados por vírgula</strong>',
+        'type' => 'text'
+    ]);
+
+    $cmb_resumo_result->add_field([
+        'name' => 'Pontos Fracos de <strong>Dominância</strong>',
+        'id' => 'ponto_fraco_dominancia',
+        'desc' => 'Descreva aqui os pontos fracos de dominância <strong>separados por vírgula</strong>',
+        'type' => 'text'
+    ]);
 
 
 
-    // =======================================================================
+
+    $cmb_resumo_result->add_field([
+        'name' => '<h1>Resumo sobre <strong>Influência</strong></h1>',
+        'id' => 'resumo_influencia',
+        'desc' => 'Coloque aqui um resumo sobre a Influência (será exibido no resultado do teste)',
+        'type' => 'textarea'
+    ]);
+
+    $cmb_resumo_result->add_field([
+        'name' => 'Pontos fortes de <strong>Influência</strong></p>',
+        'id' => 'ponto_forte_influencia',
+        'desc' => 'Descreva aqui os pontos fortes de Influência <strong>separados por vírgula</strong>',
+        'type' => 'text'
+    ]);
+
+    $cmb_resumo_result->add_field([
+        'name' => 'Pontos Fracos de <strong>Influência</strong>',
+        'id' => 'ponto_fraco_influencia',
+        'desc' => 'Descreva aqui os pontos fracos de Influência <strong>separados por vírgula</strong>',
+        'type' => 'text'
+    ]);
+
+
+
+
+
+    $cmb_resumo_result->add_field([
+        'name' => '<h1>Resumo sobre <strong>Estabilidade</strong></h1>',
+        'id' => 'resumo_estabilidade',
+        'desc' => 'Coloque aqui um resumo sobre a Estabilidade (será exibido no resultado do teste)',
+        'type' => 'textarea'
+    ]);
+
+    $cmb_resumo_result->add_field([
+        'name' => 'Pontos fortes de <strong>Estabilidade</strong></p>',
+        'id' => 'ponto_forte_estabilidade',
+        'desc' => 'Descreva aqui os pontos fortes de Estabilidade <strong>separados por vírgula</strong>',
+        'type' => 'text'
+    ]);
+
+    $cmb_resumo_result->add_field([
+        'name' => 'Pontos Fracos de <strong>Estabilidade</strong>',
+        'id' => 'ponto_fraco_estabilidade',
+        'desc' => 'Descreva aqui os pontos fracos de Estabilidade <strong>separados por vírgula</strong>',
+        'type' => 'text'
+    ]);
+
+
+
+
+
+    $cmb_resumo_result->add_field([
+        'name' => '<h1>Resumo sobre <strong>Conformidade</strong></h1>',
+        'id' => 'resumo_conformidade',
+        'desc' => 'Coloque aqui um resumo sobre a Conformidade (será exibido no resultado do teste)',
+        'type' => 'textarea'
+    ]);
+
+    $cmb_resumo_result->add_field([
+        'name' => 'Pontos fortes de <strong>Conformidade</strong></p>',
+        'id' => 'ponto_forte_conformidade',
+        'desc' => 'Descreva aqui os pontos fortes de Conformidade <strong>separados por vírgula</strong>',
+        'type' => 'text'
+    ]);
+
+    $cmb_resumo_result->add_field([
+        'name' => 'Pontos Fracos de <strong>Conformidade</strong>',
+        'id' => 'ponto_fraco_conformidade',
+        'desc' => 'Descreva aqui os pontos fracos de Conformidade <strong>separados por vírgula</strong>',
+        'type' => 'text'
+    ]);
+
+
+
+
+
+    // =====================================================================================================================================
 
     $cmb2_area_text_email = new_cmb2_box([
         'id' => 'area_text_email',
@@ -159,6 +269,45 @@ function cmb2_fields_teste(){
             'value' => 'page-test.php'
         ]
     ]);
+
+    $cmb2_area_text_email->add_field([
+        'name' => 'Assunto do email',
+        'id' => 'text_email_assunto',
+        'desc' => 'Específique um texto para o assunto dos emails de relatório',
+        'type' => 'text'
+    ]);
+
+    $cmb2_area_text_email->add_field([
+        'name' => 'Remetente',
+        'id' => 'text_email_remetente',
+        'desc' => 'Quem está enviando o email',
+        'type' => 'text'
+    ]);
+
+    $cmb2_area_text_email->add_field( array(
+        'name'    => 'Imagem cabeçalho email',
+        'desc'    => 'Insira uma imagem que será exibida no cabeçalho do email',
+        'id'      => 'image_email',
+        'type'    => 'file',
+        // Optional:
+        'options' => array(
+            'url' => false, // Hide the text input for the url
+        ),
+        'text'    => array(
+            'add_upload_file_text' => 'Add imagem' // Change upload button text. Default: "Add or Upload File"
+        ),
+        // query_args are passed to wp.media's library query.
+        'query_args' => array(
+            // Or only allow gif, jpg, or png images
+             'type' => array(
+                 'image/gif',
+                 'image/jpeg',
+                 'image/png',
+             ),
+        ),
+        'preview_size' => 'thumb', // Image size to use when previewing in the admin.
+    ) );
+
     $cmb2_area_text_email->add_field( array(
         'name'    => 'Informações para Email (Dominância)',
         'desc'    => 'Essa informação aqui é enviada por E-mail para o usuário que solicitar',
@@ -275,8 +424,36 @@ function cmb2_fields_teste(){
     $cmb2_are_pos_send->add_field([
         'name'    => 'Redirecionar para link',
         'desc'    => 'Se essa opção estiver marcada você poderá inserir um link de redirecionamento no campo abaixo no qual o usuário será redirecionado após receber o relatório por email',
-        'id'      => 'wiki_test_multicheckbox',
+        'id'      => 'action_pos_send',
         'type'    => 'checkbox'
+    ]);
+
+    $cmb2_are_pos_send->add_field([
+        'name' => 'Link de redirecionamento',
+        'desc' => 'Link para redirecionamento após envio do relatório do teste DISC',
+        'id' => 'link_redirect_pos_send',
+        'type' => 'text_url'
+    ]);
+
+    $cmb2_are_pos_send->add_field([
+        'name' => 'Texto',
+        'id' => 'text_post_send',
+        'desc' => 'Insira um texto que será exibido após o envio do formulário',
+        'type' => 'text'
+    ]);
+
+    $cmb2_are_pos_send->add_field([
+        'name' => 'Texto do botão',
+        'id' => 'text_btn_post_send',
+        'desc' => 'Texto do botão',
+        'type' => 'text'
+    ]);
+
+    $cmb2_are_pos_send->add_field([
+        'name' => 'Link do botão',
+        'id' => 'link_btn_post_send',
+        'desc' => 'Insira um link para o botão',
+        'type' => 'text_url'
     ]);
     
   

@@ -30,6 +30,7 @@
         //endforeach;
 
     endif;
+
     
 ?>
 
@@ -40,7 +41,11 @@
     <section class="page_bottom">
         <div class="container_wizard">
             <div class="wizard_top">
-                <img src="<?= get_template_directory_uri() ?>/assets/img/barra-disc.png" alt="">
+                <?php
+                    $custom_logo_id = get_theme_mod( 'custom_logo' );
+                    $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                ?>
+                <img src="<?=  esc_url( $logo[0] )  ?>" alt="logo">
             </div>
             <div class="wizard_text">
                 <header class="header_wizard_text">
@@ -169,8 +174,6 @@
                 <div class="request_result_left">
                     <h3 class="request_title">Receba seu relatório:</h3>
                     <p>Insira seu nome e seu melhor e-mail nos campos ao lado para receber gratuitamente o resultado do seu teste de perfil comportamental.</p>
-                    <p>Você também pode enviar uma cópia do seu relatório para outra pessoa, como uma empresa que tenha lhe solicitado o teste ou para seu coach, por exemplo.</p>
-                    <p>Para isso, basta preencher (no campo especificado) também o e-mail de quem deseja que receba a cópia do seu relatório DISC.</p>
                 </div>
                 <div class="request_result_right">
                     <form action="">
@@ -202,7 +205,7 @@
                     //console.log(val);
             </script>
         </div>
-
+        <!--                             
         <div class="social_share_box">
             <ul>
                 <li class="share_top">
@@ -227,6 +230,7 @@
                 </li>
             </ul>
         </div>
+         -->
     </section>
 
 <?php get_footer(); ?>

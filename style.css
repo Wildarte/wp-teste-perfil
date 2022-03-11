@@ -275,16 +275,24 @@ header.header_top_area{
     text-align: center;
 }
 .box_resps{
-    display: block;
+    display: flex;
+    justify-content: center;
     padding: 40px;
 }
 ul.resps{
+    flex-basis: 100%;
     display: flex;
     justify-content: center;
     list-style: none;
 }
+ul.resps li{
+    flex-basis: calc(25%);
+   
+    display: flex;
+}
 ul.resps li button{
-    padding: 8px 30px;
+    width: 100%;
+    padding: 12px 30px;
     margin: 10px;
     font-size: 1em;
     font-weight: 200;
@@ -294,12 +302,12 @@ ul.resps li button{
 }
 ul.resps li button:hover{
     cursor: pointer;
-    box-shadow: inset 1px 1px 8px #111;
+    outline: 1px solid;
     transition: all .23s;
 }
 .box_bar{
     width: 100%;
-    padding: 20px 40px;
+    padding: 20px 40px 40px;
 }
 .bar_progress{
     height: 20px;
@@ -491,6 +499,16 @@ ul.resps li button:hover{
     flex-wrap: wrap;
     padding: 40px;
 }
+.request_result a.btn_pos_send{
+    font-size: 1.2em;
+    padding: 12px 30px;
+    border: 1px solid;
+    text-decoration: none;
+    margin: 10px auto 40px;
+    color: #fff;
+    background-color: #0072b1;
+    border-radius: 4px;
+}
 .request_result_left, .request_result_right{
     flex-basis: calc(50% - 20px);
     margin: 10px;
@@ -560,6 +578,13 @@ h3.request_title{
         flex-basis: calc(100% - 20px);
         padding: 0;
     }
+    ul.resps{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    ul.resps li{
+        flex-basis: calc(50% - 16px);
+    }
 }
 
 @media(max-width: 420px){
@@ -580,5 +605,17 @@ h3.request_title{
     }
     .header_title{
         margin: 30px 0 10px 0;
+    }
+    .box_resps{
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+    }
+    ul.resps li{
+        flex-basis: calc(100% - 16px);
+        display: flex;
+    }
+    .box_bar{
+        padding: 20px 15px 40px;
     }
 }

@@ -3,7 +3,6 @@
     require '../../../../wp-config.php';
 
     
-    
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -11,7 +10,7 @@
         $answer = $_POST['answer'];
         $position = $_POST['position'];
         $array_adj = ['one','two','three','four'];
-        $rand_adj = [];//variavel para armazenar nomes das variaveis
+        //$rand_adj = [];//variavel para armazenar nomes das variaveis
 
         $num_question = $_POST['num_q']; //numero da questao
         $page_id = $_POST['page_id']; //get page id
@@ -54,32 +53,32 @@
 
 
             $fator_predominante = "";
-            if($r_d >= $r_i && $r_d >= $r_s && $r_d >= $r_c){
-                if($r_d == $r_i){
+            if($n1 >= $n2 && $n1 >= $n3 && $n1 >= $n4){
+                if($n1 == $n2){
                     $fator_predominante = "Dominância";
-                }elseif($r_d == $r_s){
+                }elseif($n1 == $n3){
                     $fator_predominante = "Dominância";
-                }elseif($_d == $r_c){
+                }elseif($_d == $n4){
                     $fator_predominante = "Dominância";
                 }else{
                     $fator_predominante = "Dominância";
                 }
-            }elseif($r_i >= $r_d && $r_i >= $r_s && $r_i >= $r_c){
-                if($r_i == $r_d){
+            }elseif($n2 >= $n1 && $n2 >= $n3 && $n2 >= $n4){
+                if($n2 == $n1){
                     $fator_predominante = "Influência";
-                }else if($r_i == $r_s){
+                }else if($n2 == $n3){
                     $fator_predominante = "Influência";
-                }elseif($r_i == $r_c){
+                }elseif($n2 == $n4){
                     $fator_predominante = "Influência";
                 }else{
                     $fator_predominante = "Influência";
                 }
-            }elseif($r_s >= $r_d && $r_s >= $r_i && $r_s >= $r_c){
-                if($r_s == $r_d){
+            }elseif($n3 >= $n1 && $n3 >= $n2 && $n3 >= $n4){
+                if($n3 == $n1){
                     $fator_predominante = "Estabilidade";
-                }elseif($r_s == $r_i){
+                }elseif($n3 == $n2){
                     $fator_predominante = "Estabilidade";
-                }elseif($r_s == $r_c){
+                }elseif($n3 == $n4){
                     $fator_predominante = "Estabilidade";
                 }else{
                     $fator_predominante = "Estabilidade";
@@ -172,41 +171,13 @@
             $w4 = "conformidade";
 
         
-            checkResults(round($r_c), round($r_d), round($r_i), round($r_s), $w4, $w1, $w2, $w3);
-            checkResults(round($r_s), round($r_c), round($r_d), round($r_i), $w3, $w4, $w1, $w2);
-            checkResults(round($r_i), round($r_s), round($r_c), round($r_d), $w2, $w3, $w4, $w1);
-            checkResults(round($r_d), round($r_i), round($r_s), round($r_c), $w1, $w2, $w3, $w4);
+            checkResults(round($n4), round($n1), round($n2), round($n3), $w4, $w1, $w2, $w3);
+            checkResults(round($n3), round($n4), round($n1), round($n2), $w3, $w4, $w1, $w2);
+            checkResults(round($n2), round($n3), round($n4), round($n1), $w2, $w3, $w4, $w1);
+            checkResults(round($n1), round($n2), round($n3), round($n4), $w1, $w2, $w3, $w4);
 
 
-
-            /*
-            if($results_test[0] >= $results_test[1]){
-                if($results_test[0] >= $results_test[2]){
-                    if($results_test[0] >= $results_test[3] ){
-
-                        $_SESSION['first_default'] = "dominancia";
-
-                        if($results_test[1] > 20){
-                            if($results_test[1] >= $results_test[2]){
-                                if($results_test[1] >= $results_test[3]){
-    
-                                    $_SESSION['second_default'] = "influencia";
-
-                                    if($results_test[2] > 20 && $results_test[2] > $results_test[3]){
-                                        $_SESSION['third_default'] = 'estabilidade';
-                                        $_SESSION['fourth_default'] = 'conformidade';
-                                    }
-    
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-            }
-            */
-
-            //echo "Domin: ".$r_d." / Influ: ".$r_i." / Estab: ".$r_s." / Conform: ".$r_c."<br>";
+        
 
             ?>
             <style>
@@ -215,113 +186,9 @@
                 }
             </style>
             <?php
-            echo "<h2>primeiro: ".$_SESSION["first_default"]."</h2> <br>";
-            echo "<h2>segundo: ".$_SESSION["second_default"]."</h2><br>";
-            echo "<h2>terceiro: ".$_SESSION["third_default"]."</h2> <br>";
-            echo "<h2>quarto: ".$_SESSION["fourth_default"]."</h2 ><br>";
-
-            echo "Dom ".$r_d;
-            echo "Inf ".$r_i;
-            echo "Est ".$r_s;
-            echo "Conf ".$r_c;
-
-            //check valor de cada variavel para atribuir os títulos do padrões por email
-$t1 = ""; 
-$t2 = ""; 
-$t3 = ""; 
-$t4 = ""; 
-
-
-//check a primeira varivel
-switch($_SESSION['first_default']):
-    case "dominancia":
-        $t1 = "Dominância";
-    break;
-    case "influencia":
-        $t1 = "Influência";
-    break;
-    case "estabilidade":
-        $t1 = "Estabilidade";
-    break;
-    case "conformidade":
-        $t1 = "Conformidade";
-    default:
-        "";
-endswitch;
-
-
-//check a segunda variavel
-switch($_SESSION['second_default']):
-    case "dominancia":
-        $t2 = "Dominância";
-    break;
-    case "influencia":
-        $t2 = "Influência";
-    break;
-    case "estabilidade":
-        $t2 = "Estabilidade";
-    break;
-    case "conformidade":
-        $t2 = "Conformidade";
-    default:
-        "";
-endswitch;
-
-
-//check a terceira variavel
-switch($_SESSION['third_default']):
-    case "dominancia":
-        $t3 = "Dominância";
-    break;
-    case "influencia":
-        $t3 = "Influência";
-    break;
-    case "estabilidade":
-        $t3 = "Estabilidade";
-    break;
-    case "conformidade":
-        $t3 = "Conformidade";
-    default:
-        "";
-endswitch;
-
-
-
-//check a quarta variavel
-switch($_SESSION['fourth_default']):
-    case "dominancia":
-        $t4 = "Dominância";
-    break;
-    case "influencia":
-        $t4 = "Influência";
-    break;
-    case "estabilidade":
-        $t4 = "Estabilidade";
-    break;
-    case "conformidade":
-        $t4 = "Conformidade";
-    default:
-        "";
-endswitch;
-
-
-
-$content = "";
-
-if(($_SESSION['first_default'] != "")){
-    $content = $content."<tr><td><h2>".$t1."</h2></td></tr><tr><td>".get_post_meta($page_id, 'text_email_'.$_SESSION['first_default'], true)."</td></tr>";
-}
-if(!empty($_SESSION['second_default'])){
-    $content = $content."<tr><td><h2>".$t2."</h2></td></tr><tr><td>".get_post_meta($page_id, 'text_email_'.$_SESSION['second_default'], true)."</td></tr>";
-}
-if(!empty($_SESSION['third_default'])){
-    $content = $content."<tr><td><h2>".$t3."</h2></td></tr><tr><td>".get_post_meta($page_id, 'text_email_'.$_SESSION['third_default'], true)."</td></tr>";
-}
-if(!empty($_SESSION['fourth_default'])){
-    $content = $content."<tr><td><h2>".$t4."</h2></td></tr><tr><td>".get_post_meta($page_id, 'text_email_'.$_SESSION['fourth_default'], true)."</td></tr>";
-}
-
-echo $content;
+        
+           
+ 
             ?>
                 <div class="graphs">
                     <h4>Seu Resultado</h4>
@@ -391,33 +258,12 @@ echo $content;
                         endswitch;
                     ?>
                     <p>Fator Predominante: <span class="result_word color_word_<?= $color_word_result; ?>"><?= $fator_predominante ?></span></p>
-                    <p>Esta dimensão enfatiza a possibilidade de trabalhar para assegurar a qualidade e a precisão em todas as tarefas.</p>
-                    <p><strong>Pontos Fortes: </strong> digno de confiança, prático, diplomata, objetivo, organizado e eficiente.</p>
-                    <p><strong>Pontos Fracos: </strong>egoísta, avarento, indeciso, desmotivado, preguiçoso e preocupado.</p>
+                    <p><?= get_post_meta($page_id, 'resumo_'.$color_word_result, true); ?></p>
+                    <p><strong>Pontos Fortes: </strong> <?= get_post_meta($page_id, 'ponto_forte_'.$color_word_result, true); ?></p>
+                    <p><strong>Pontos Fracos: </strong><?= get_post_meta($page_id, 'ponto_fraco_'.$color_word_result, true); ?></p>
                     
                 </div>
-            <script>
-
-                    
-
-                    //let val = document.querySelector('.dom_bar_progress').getAttribute('data-progress');
-                    //console.log(val);
-                    //document.getElementsByClassName('.dom_bar_progress')[0].style.width = "20%";
-                    //document.getElementsByClassName('.dom_bar_progress')[0].style.transition = '1.6s';
-                    
-                    
-
-                    //document.querySelector('.inf_bar_progress').style.width = '30%';
-                    //document.querySelector('.inf_bar_progress').style.transition = '1.6s';
-
-                    //document.querySelector('.est_bar_progress').style.width = '60%';
-                    //document.querySelector('.est_bar_progress').style.transition = '1.6s';
-
-                    //document.querySelector('.con_bar_progress').style.width = '90%';
-                    //document.querySelector('.con_bar_progress').style.transition = '1.6s';
-                
-                
-            </script>
+           
             <?php
         else:
 
@@ -426,29 +272,7 @@ echo $content;
                 
 
                
-                /*
-                if($adjetivos[$in_prev]['select_cat_adj_'.$adj_position.''] != $value_answer || $adjetivos[$in_prev]['adjetivo_'.$adj_position.''] != $answer):
-                
-                    echo "Existe um diferente";
-
-                    echo "adj_position: ".$adj_position."<br>";
-                    echo "value_answer: ".$value_answer."<Br>";
-                    echo "answer: ".$answer."<br>";
-                    echo "position: ".$position."<br>";
-                    echo "select_adj: ".$adjetivos[$in_prev]['select_cat_adj_'.$adj_position]."<br>";
-                    echo "adjetivo: ".$adjetivos[$in_prev]['adjetivo_'.$adj_position]."<br>";
-                    echo "in_prev: ".$in_prev."<br>";
-
-                else:*/
-                
-                    //echo "adj_position: ".$adj_position."<br>";
-                    //echo "value_answer: ".$value_answer."<br>";
-                    //echo "answer: ".$answer."<br>";
-                    //echo "position: ".$position."<br>";
-                    //echo "select_adj: ".$adjetivos[$in_prev]['select_cat_adj_'.$adj_position.'']."<br>";
-                    //echo "adjetivo: adjetivo_".$adj_position."<br>";
-                    //echo "in_prev: ".$in_prev."<br>";
-                    
+              
                     
                     if($num_question < $count_adj):
                         //echo " | ".$num_question;
@@ -458,12 +282,7 @@ echo $content;
                         if(!empty($adjetivos[$num_question])):
                             //echo "<h1>Variável: ";
                             shuffle($array_adj);
-                            //for($i = 0; $i < 4; $i++){
-                            //    echo $array_adj[$i]." / ";
-                            //}
-                            //echo "</h1>";
-                            //echo "Número da questão: ".$num_question." | Contagem de perguntas: ".$count_adj;
-                            
+                           
                             
                             ?>
 
